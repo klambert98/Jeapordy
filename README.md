@@ -28,5 +28,6 @@ Then open the local URL shown in terminal.
 
 ## Notes
 
-- Sounds are synthesized in-browser using the Web Audio API (no external audio files required).
+- Sound effects are loaded from the files in public/sounds.
+- Public image and audio assets are resolved through Vite's configured base path so they work locally and on GitHub Pages.
 - Game state persists in localStorage under `jeapordy-board-v1`.

@@ -3,6 +3,7 @@ import './style.css';
 const STORAGE_KEY = 'jeapordy-board-v1';
 const TEAMS_STORAGE_KEY = 'jeapordy-teams-v1';
 const VALUES = [100, 200, 300, 400, 500];
+const ASSET_BASE_URL = normalizeBaseUrl(import.meta.env.BASE_URL || '/');
 
 const DEFAULT_TEAMS = [
   { name: 'Team 1', score: 0 },
@@ -45,9 +46,9 @@ const DEFAULT_BOARD = {
     {
       title: 'Where in the World',
       clues: [
-        { value: 100, question: 'Where was this photo taken?', answer: 'Where is ___?', answered: false, isDailyDouble: false, picture: '/pictures/josie_unknown.jpg' },
-        { value: 200, question: 'Where was this photo taken?', answer: 'Where is Alaska?', answered: false, isDailyDouble: false, picture: '/pictures/josie_alaska.jpg' },
-        { value: 300, question: 'Where was this photo taken?', answer: 'Where is Banff?', answered: false, isDailyDouble: false, picture: '/pictures/josie_banff.png' },
+        { value: 100, question: 'Where was this photo taken?', answer: 'Where is ___?', answered: false, isDailyDouble: false, picture: 'pictures/josie_unknown.jpg' },
+        { value: 200, question: 'Where was this photo taken?', answer: 'Where is Alaska?', answered: false, isDailyDouble: false, picture: 'pictures/josie_alaska.jpg' },
+        { value: 300, question: 'Where was this photo taken?', answer: 'Where is Banff?', answered: false, isDailyDouble: false, picture: 'pictures/josie_banff.png' },
         { value: 400, question: 'Where was this photo taken?', answer: 'Where is ___?', answered: false, isDailyDouble: false },
         { value: 500, question: 'Where was this photo taken?', answer: 'Where is ___?', answered: false, isDailyDouble: false },
       ],
@@ -176,7 +177,7 @@ function runBoardFillSequence() {
   const ZOOM_OUT   = FIRST_ZOOM + 5 * COL_STEP + 500;   // after last reveal
   const DONE       = ZOOM_OUT + 950;                     // hand off to game
 
-  playMp3('/sounds/boardfill.mp3');
+  playMp3('sounds/boardfill.mp3');
 
   for (let col = 0; col < 5; col += 1) {
     const zoomAt   = FIRST_ZOOM + col * COL_STEP;
@@ -315,7 +316,7 @@ function renderAdminPanel() {
 
       <div class="admin-row">
         <label for="pictureInput">Picture Path (optional)</label>
-        <input id="pictureInput" data-action="admin-picture" value="${escapeHtml(clue.picture || '')}" placeholder="e.g. /pictures/josie_alaska.jpg" />
+        <input id="pictureInput" data-action="admin-picture" value="${escapeHtml(clue.picture || '')}" placeholder="e.g. pictures/josie_alaska.jpg" />
       </div>
 
       <div class="admin-actions">
@@ -386,7 +387,7 @@ function renderModal() {
         </div>
         ${dailyStage ? '<div class="daily-banner">Daily Double!</div>' : ''}
         <div class="modal-content">
-          ${clue.picture ? `<img class="clue-photo" src="${escapeHtml(clue.picture)}" alt="Where in the World clue" />` : ''}
+          ${clue.picture ? `<img class="clue-photo" src="${escapeHtml(assetUrl(clue.picture))}" alt="Where in the World clue" />` : ''}
           <div class="clue-text">${escapeHtml(clue.question)}</div>
           ${state.showAnswer ? `<div class="answer">${escapeHtml(clue.answer)}</div>` : ''}
         </div>
@@ -772,6 +773,15 @@ function shuffleArray(array) {
 let _currentAudio = null;
 let _fadeInterval = null;
 
+function normalizeBaseUrl(baseUrl) {
+  return baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+}
+
+function assetUrl(path) {
+  const normalizedPath = String(path || '').replace(/^\/+/, '');
+  return `${ASSET_BASE_URL}${normalizedPath}`;
+}
+
 function playMp3(src) {
   // Cancel any in-progress fade
   if (_fadeInterval) {
@@ -782,7 +792,7 @@ function playMp3(src) {
     _currentAudio.pause();
     _currentAudio.currentTime = 0;
   }
-  const audio = new Audio(src);
+  const audio = new Audio(assetUrl(src));
   _currentAudio = audio;
   audio.play().catch(() => {});
 }
@@ -811,19 +821,19 @@ function fadeOutCurrentAudio(durationMs = 600) {
 }
 
 function playClueSound() {
-  playMp3('/sounds/theme.mp3');
+  playMp3('sounds/theme.mp3');
 }
 
 function playDailyDoubleSound() {
-  playMp3('/sounds/dailydouble.mp3');
+  playMp3('sounds/dailydouble.mp3');
 }
 
 function playCorrectSound() {
-  playMp3('/sounds/correct.mp3');
+  playMp3('sounds/correct.mp3');
 }
 
 function playNoPointsSound() {
-  playMp3('/sounds/nopoints.mp3');
+  playMp3('sounds/nopoints.mp3');
 }
 
 function playToneSequence(sequence) {
