@@ -659,15 +659,11 @@ function saveAdminChanges() {
 }
 
 function resetProgress() {
-  state.board.categories.forEach((category) => {
-    category.clues.forEach((clue) => {
-      clue.answered = false;
-    });
-  });
+  localStorage.removeItem(STORAGE_KEY);
+  state.board = loadBoard();
   state.teams.forEach((team) => {
     team.score = 0;
   });
-  persistBoard();
   persistTeams();
   render();
 }
