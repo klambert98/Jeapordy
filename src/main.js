@@ -26,10 +26,10 @@ const DEFAULT_BOARD = {
     {
       title: "Hill's History",
       clues: [
-        { value: 100, question: 'These two are Josie\'s parents.', answer: 'Who is Stefani and Dennis?', answered: false, isDailyDouble: false },
+        { value: 100, question: 'These two are Josie\'s parents.', answer: 'Who is Stefani and Denis?', answered: false, isDailyDouble: false },
         { value: 200, question: 'This extracurricular activity was what she participated in during High School.', answer: 'What is Band?', answered: false, isDailyDouble: false },
         { value: 300, question: 'Not everyone has the same sized feet. This number represents Josie\'s shoe size.', answer: 'What is 11?', answered: false, isDailyDouble: false },
-        { value: 400, question: 'If you wanted to get her attention on the playground, you might have called her by this childhood nickname.', answer: 'What is Picke? (Or JoJo)', answered: false, isDailyDouble: false },
+        { value: 400, question: 'If you wanted to get her attention on the playground, you might have called her by this childhood nickname.', answer: 'What is Pickle? (Or JoJo)', answered: false, isDailyDouble: false },
         { value: 500, question: 'This celebrity could be found in the posters of the bride\'s bedroom.', answer: 'Who is Ian Somerhalder?', answered: false, isDailyDouble: false },
       ],
     },
