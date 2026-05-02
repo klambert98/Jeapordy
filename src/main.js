@@ -46,11 +46,11 @@ const DEFAULT_BOARD = {
     {
       title: 'Where in the World',
       clues: [
-        { value: 100, question: 'Where was this photo taken?', answer: 'Where is ___?', answered: false, isDailyDouble: false, picture: 'pictures/josie_unknown.jpg' },
-        { value: 200, question: 'Where was this photo taken?', answer: 'Where is Alaska?', answered: false, isDailyDouble: false, picture: 'pictures/josie_alaska.jpg' },
-        { value: 300, question: 'Where was this photo taken?', answer: 'Where is Banff?', answered: false, isDailyDouble: false, picture: 'pictures/josie_banff.png' },
-        { value: 400, question: 'Where was this photo taken?', answer: 'Where is ___?', answered: false, isDailyDouble: false },
-        { value: 500, question: 'Where was this photo taken?', answer: 'Where is ___?', answered: false, isDailyDouble: false },
+        { value: 100, question: 'Where was this photo taken?', answer: 'Where is The Dalles?', answered: false, isDailyDouble: false, picture: 'pictures/Josie_TheDalles.jpg' },
+        { value: 200, question: 'Where was this photo taken?', answer: 'Where is Medical Lake?', answered: false, isDailyDouble: false, picture: 'pictures/Josie_MedicalLake.jpg' },
+        { value: 300, question: 'Where was this photo taken?', answer: 'Where is Lake Louise, Banff, Canada?', answered: false, isDailyDouble: false, picture: 'pictures/josie_banff.png' },
+        { value: 400, question: 'Where was this photo taken?', answer: 'Where is Juneau, Alaska?', answered: false, isDailyDouble: false, picture: 'pictures/josie_alaska.jpg' },
+        { value: 500, question: 'Where was this photo taken?', answer: 'Where is Paris, France?', answered: false, isDailyDouble: false, picture: 'pictures/Josie_Paris.jpg' },
       ],
     },
     {
