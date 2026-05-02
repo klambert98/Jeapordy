@@ -1,6 +1,6 @@
 import './style.css';
 
-const STORAGE_KEY = 'jeapordy-board-v1';
+const STORAGE_KEY = 'jeapordy-board-v2';
 const TEAMS_STORAGE_KEY = 'jeapordy-teams-v1';
 const VALUES = [100, 200, 300, 400, 500];
 const ASSET_BASE_URL = normalizeBaseUrl(import.meta.env.BASE_URL || '/');
